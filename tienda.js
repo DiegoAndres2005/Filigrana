@@ -7,25 +7,25 @@ const products = [
         category: "rings",
         material: "silver",
         image: "Imgs/Imagen3.png",
-        description: "Elegante anillo con diamantes genuinos, perfecto para ocasiones especiales."
+        description: "Elegante anillo con forma de mariposa, perfecto para ocasiones especiales."
     },
     {
         id: 2,
-        name: "Collares de Oro",
+        name: "Aretes de Oro",
         price: 500000,
         category: "earrings",
         material: "gold",
         image: "Imgs/Imagen1.png",
-        description: "Hermoso collar de oro de 18k con diseño moderno y elegante."
+        description: "Hermoso arete de oro con diseño Momposino y elegante."
     },
     {
         id: 3,
-        name: "Argollas de oro",
+        name: "Pendientes de Oro",
         price: 500000,
         category: "earrings",
-        material: "silver",
+        material: "gold",
         image: "Imgs/Imagen4.png",
-        description: "Aretes de plata esterlina con diseño minimalista y contemporáneo."
+        description: "Pendientes de oro con diseño minimalista y contemporáneo."
     },
     {
         id: 4,
@@ -38,30 +38,30 @@ const products = [
     },
     {
         id: 5,
-        name: "Anillo de Compromiso",
+        name: "Aretes Elegantes",
         price: 500000,
         category: "earrings",
         material: "gold",
         image: "Imgs/Imagen2.png",
-        description: "Exquisito anillo de compromiso con diamante central y detalles en oro blanco."
+        description: "Exquisitos aretes de oro con diamantes centrales y detalles en oro blanco."
     },
     {
         id: 6,
-        name: "Collar de Perlas",
+        name: "Collar de Filigrana en Rombos",
         price: 500000,
         category: "necklaces",
         material: "silver",
         image: "Imgs/Imagen5.png",
-        description: "Clásico collar de perlas cultivadas con cerradura de plata esterlina."
+        description: "Clásico collar de filigrana en rombos con cerradura de plata esterlina."
     },
     {
         id: 7,
-        name: "Collar de Perlas",
+        name: "Collar con Diseño de Loros",
         price: 500000,
         category: "earrings",
         material: "gold",
         image: "Imgs/Imagen7.png",
-        description: "Clásico collar de perlas cultivadas con cerradura de plata esterlina."
+        description: "Collar de oro con diseño de loros, una pieza única y colorida."
     },
     {
         id: 8,
@@ -106,7 +106,7 @@ const products = [
         category: "necklaces",
         material: "silver",
         image: "Imgs/Imagen12.png",
-        description: "Clásico collar de cuello ajustado con detalles en plata esterlina."
+        description: "Clásico collar de cuello ajustado con detalles en plata esterlina y un estilo moderno."
     }
 ];
 
@@ -264,5 +264,4 @@ function showCustomAlert(message) {
         setTimeout(() => alertBox.remove(), 400);
     }, 3000);
 }
-
 
