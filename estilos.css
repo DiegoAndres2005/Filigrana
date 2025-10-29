@@ -227,7 +227,7 @@ nav ul li a:hover {
 
 /* === Pie de página === */
 footer {
-    background-color: cornflowerblue;
+    background-color: #33a1c6;
     color: white;
     padding: 40px 0;
 }
@@ -561,3 +561,4 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
