@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macondo Filigrana - Catálogo de Joyas</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Macondo Filigrana</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li class="cart-icon" onclick="toggleCart()">
+                        <span class="cart-icon">🛒</span> <span class="cart-count">0</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner principal -->
+    <section class="hero">
+        <div class="container">
+            <h1>La magia  tejida en hilos en tus manos.</h1>
+            <p>Joyas ancestrales elaborados con calidad, diseños para ocasiones diarias.</p>
+            <a href="#catalog" class="btn">Ver Colección</a>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Filtros -->
+        <section class="filters">
+            <h2 class="filter-title">Filtrar por:</h2>
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label for="category">Categoría</label>
+                    <select id="category" onchange="filterProducts()">
+                        <option value="all">Todas las categorías</option>
+                        <option value="rings">Anillos</option>
+                        <option value="necklaces">Collares</option>
+                        <option value="earrings">Aretes</option>
+                        <option value="bracelets">Pulseras</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="material">Material</label>
+                    <select id="material" onchange="filterProducts()">
+                        <option value="all">Todos los materiales</option>
+                        <option value="gold">Oro</option>
+                        <option value="silver">Plata</option>
+                        <option value="diamonds">Diamantes</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price">Precio máximo</label>
+                    <input type="range" id="price" min="50" max="1000000" step="50" value="1000000" 
+                        oninput="updatePriceValue(this.value)" onchange="filterProducts()">
+                    <span id="price-value">$1000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catálogo de productos -->
+        <section id="catalog" class="catalog">
+            <!-- Se llena con JS -->
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Macondo Filigrana</h3>
+                <p>Creando joyas excepcionales desde 1995. Nuestra misión es brindar piezas únicas que capturen momentos especiales.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces rápidos</h3>
+                <a href="tienda.html">Inicio</a>
+                <a href="tienda.html#catalog">Catálogo</a>
+                <a href="sobre.html">Sobre Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>
+                    <span class="icon-row">
+                        <a class="whatsapp-icon" href="https://wa.me/573175619540" target="_blank" title="WhatsApp">
+                            <img src="Imgs/Whatsapp.ico" alt="WhatsApp" width="22" height="22" style="vertical-align:middle;">
+                        </a>
+                        
+                        <a class="nequi-icon" href="https://wa.me/573175619540" target="_blank" title="Nequi">
+                            <img src="Imgs/nequi_icon.ico" alt="Nequi" width="22" height="22" style="vertical-align:middle;">
+                        </a>
+                    </span>
+                </p>
+                <p>
+                    <a href="https://wa.me/573175619540" target="_blank">+57 317 5619540</a>
+                </p>
+                <p>📫 info@elegancejewels.com</p>
+                <p>🏛️ Mompox, Bolivar</p>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2023 Elegance Jewels - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Pedidos de compras -->
+    <div class="cart-modal cart-sidebar" id="cart-modal">
+        <div class="cart-header">
+            <h2>Tus pedidos</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total">$0.00</span>
+        </div>
+        <div class="cart-actions">
+            <button class="cancel-btn" onclick="toggleCart()">Cancelar</button>
+
+            <div class="pay-btn-container">
+                <button class="pay-btn">Pagar</button>
+                <div class="qr-hover">
+                    <img src="Imgs/qr.png" alt="QR Nequi">
+                    <p>Escanea con Nequi para completar tu pago 💜</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay oscuro para el sidebar -->
+    <div id="cart-overlay"></div>
+    <script src="tienda.js"></script>
+      <!-- Modal para ver fotos ampliadas -->
+    <div id="photoModal" class="photo-modal hidden">
+        <div class="photo-backdrop"></div>
+        <img id="photoModalImg" src="" alt="Vista ampliada">
+    </div>
+
+    <style>
+        /* === Estilos del modal de imagen ampliada === */
+        .photo-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        transition: opacity 0.3s ease-in-out;
+        }
+
+        .photo-modal.hidden {
+        display: none;
+        }
+
+        .photo-modal img {
+        max-width: 85%;
+        max-height: 85%;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        animation: zoomIn 0.4s ease-in-out;
+        }
+
+        @keyframes zoomIn {
+        from { transform: scale(0.7); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+
+    <script>
+        // === VER FOTO AMPLIADA AL HACER CLIC ===
+        document.addEventListener("DOMContentLoaded", () => {
+        const photoModal = document.getElementById("photoModal");
+        const photoModalImg = document.getElementById("photoModalImg");
+
+        // Detectar clic en cualquier imagen del catálogo
+        document.body.addEventListener("click", (e) => {
+            const target = e.target;
+
+            // Solo si clickea una imagen dentro del catálogo
+            if (target.tagName === "IMG" && target.closest(".product-image")) {
+            photoModalImg.src = target.src;
+            photoModal.classList.remove("hidden");
+            }
+        });
+
+        // Cerrar vista ampliada al hacer clic fuera de la imagen
+        photoModal.addEventListener("click", (e) => {
+            if (e.target === photoModal || e.target.classList.contains("photo-backdrop")) {
+            photoModal.classList.add("hidden");
+            }
+        });
+        });
+    </script>
+</body>
+</html>

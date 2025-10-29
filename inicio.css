@@ -1,0 +1,84 @@
+/* Estilo minimalista para la página de inicio */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+/* === Título superior === */
+.top-title {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 58px;
+  font-weight: 600;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  z-index: 10; /* para que quede por encima del fondo */
+}
+
+.intro-container {
+  background-image: url("Imgs/mompox.png"); /* Usa la misma imagen que en estilos.css */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-content {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 40px 60px;
+  border-radius: 15px;
+  color: white;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.intro-content h1 {
+  font-size: 48px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.intro-content p {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #d4af37;
+}
+
+.intro-content:hover {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #d4af37;
+  color: white;
+  padding: 14px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #bf9b30;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

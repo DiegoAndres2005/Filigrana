@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio - Macondo Filigrana</title>
+    <link rel="stylesheet" href="inicio.css" />
+    <style>
+      :root {
+        --gold: #d4af37;
+        --bg-alpha: 0.55;
+        --gap: 24px;
+      }
+
+      /* Box sizing global */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      /* === CONTENEDOR PRINCIPAL === */
+      .intro-container {
+        background-image: url("Imgs/mompox.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh; /* usar min-height para evitar recortes en móviles */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(16px, 4vw, 48px);
+      }
+
+      .intro-content {
+        display: flex;
+        gap: var(--gap);
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, var(--bg-alpha));
+        border-radius: 15px;
+        padding: clamp(18px, 3.5vw, 50px);
+        color: white;
+        width: 100%;
+        max-width: 1100px;
+        animation: fadeIn 1s ease-in-out;
+        flex-wrap: wrap; /* permite que los elementos bajen en pantallas pequeñas */
+      }
+
+      /* === PRESENTACIÓN === */
+      .presentation {
+        flex: 1 1 320px; /* flexible: crecer, reducir, base 320px */
+        text-align: left;
+        min-width: 220px;
+      }
+
+      .presentation h1 {
+        font-size: clamp(22px, 4.2vw, 42px);
+        color: var(--gold);
+        margin-bottom: 12px;
+      }
+
+      .presentation p {
+        font-size: clamp(14px, 2.2vw, 18px);
+        color: #fff;
+        margin-bottom: 14px;
+        line-height: 1.5;
+      }
+
+      .presentation img {
+        width: 100%;
+        max-width: 320px;
+        height: auto; /* imagen responsive */
+        border-radius: 12px;
+        margin-top: 10px;
+        display: block;
+      }
+
+      /* === LOGIN BOX === */
+      .login-box {
+        flex: 0 1 320px; /* base 320px, se ajusta */
+        background: rgba(255, 255, 255, 0.12);
+        padding: clamp(14px, 3vw, 28px);
+        border-radius: 10px;
+        text-align: left;
+        min-width: 260px;
+      }
+
+      .login-box h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 12px;
+        font-size: clamp(18px, 3vw, 26px);
+      }
+
+      .login-box label {
+        display: block;
+        margin: 8px 0 6px;
+        color: #fff;
+        font-size: clamp(13px, 2.2vw, 18px);
+      }
+
+      .login-box input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+
+      .login-btn,
+      .register-link {
+        width: 100%;
+        background-color: var(--gold);
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 25px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.25s;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        margin-top: 10px;
+      }
+
+      .login-btn:hover,
+      .register-link:hover {
+        background-color: #bf9b30;
+      }
+
+      .error-message {
+        color: #ff6666;
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+        font-weight: bold;
+      }
+
+      /* TIP: Evitar height fijos en header; usar padding y tamaño relativo */
+      header.top-title h1 {
+        font-size: clamp(20px, 4vw, 36px);
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      /* Animaciones */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Puntos de quiebre: mobile-first */
+      @media (max-width: 900px) {
+        .intro-content {
+          padding: 20px;
+          gap: 18px;
+        }
+        .presentation {
+          text-align: center;
+        }
+        .presentation img {
+          margin: 0 auto;
+          max-width: 260px;
+        }
+        .login-box {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .intro-content {
+          padding: 14px;
+          gap: 12px;
+        }
+        .presentation img {
+          max-width: 220px;
+        }
+        .login-box {
+          padding: 12px;
+        }
+        .login-btn,
+        .register-link {
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+
+      /* Overlay animación (mantener responsive) */
+      #animacion-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .animacion-contenido h2 {
+        font-size: clamp(18px, 4vw, 28px);
+      }
+      .contador-texto {
+        font-size: clamp(16px, 3.5vw, 22px);
+      }
+      #contador {
+        font-size: clamp(20px, 4.5vw, 28px);
+        color: #90ee90;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Título superior -->
+    <header class="top-title">
+      <h1>
+        Bienvenidos a <br />
+        Macondo Filigrana
+      </h1>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="intro-container">
+      <div class="intro-content">
+        <!-- === SECCIÓN DE PRESENTACIÓN === -->
+        <div class="presentation">
+          <h1>Desde Mompox</h1>
+          <p>
+            Donde el arte ancestral de la filigrana cobra vida. Joyas únicas
+            creadas por manos artesanas, inspiradas en la historia y tradición
+            de nuestro pueblo.
+          </p>
+          <img src="Imgs/mompox.jpg" alt="Joyas de Mompox" height="250px" />
+        </div>
+
+        <!-- === FORMULARIO LOGIN === -->
+        <div class="login-box">
+          <h2>Iniciar Sesión</h2>
+          <form id="loginForm">
+            <label for="usuario">Correo electrónico:</label>
+            <input
+              type="email"
+              id="usuario"
+              placeholder="Ingrese su correo"
+              required
+            />
+
+            <label for="clave">Contraseña:</label>
+            <input
+              type="password"
+              id="clave"
+              placeholder="Ingrese su contraseña"
+              required
+            />
+
+            <button type="submit" class="login-btn">Entrar</button>
+            <a href="registro.html" class="register-link">Registrarse</a>
+
+            <p id="error-message" class="error-message">
+              Usuario o contraseña incorrectos
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // === LOGIN conectado con los registros guardados ===
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const usuario = document.getElementById("usuario").value.trim();
+          const clave = document.getElementById("clave").value.trim();
+          const errorMsg = document.getElementById("error-message");
+
+          const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+          const encontrado = usuarios.find(
+            (u) => u.correo === usuario && u.clave === clave
+          );
+
+          if (encontrado) {
+            mostrarAnimacion();
+          } else {
+            errorMsg.style.display = "block";
+          }
+        });
+
+      // === FUNCIÓN DE ANIMACIÓN ===
+      function mostrarAnimacion() {
+        // Crear overlay
+        const overlay = document.createElement("div");
+        overlay.id = "animacion-overlay";
+        overlay.innerHTML = `
+        <div class="animacion-contenido">
+          <h2>✨ Gracias por confiar en Macondo Filigrana ✨</h2>
+          <p class="contador-texto">Clientes satisfechos: <span id="contador">0</span>+</p>
+        </div>
+      `;
+        document.body.appendChild(overlay);
+
+        // Estilos del overlay
+        const estilos = document.createElement("style");
+        estilos.textContent = `
+        #animacion-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          z-index: 9999;
+          animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .animacion-contenido {
+          text-align: center;
+          color: #fff;
+          font-family: "Poppins", sans-serif;
+          animation: zoomIn 1.2s ease-in-out;
+        }
+
+        .animacion-contenido h2 {
+          font-size: 28px;
+          color: #d4af37;
+          margin-bottom: 15px;
+          text-shadow: 0 0 10px #d4af37;
+        }
+
+        .contador-texto {
+          font-size: 22px;
+          margin-top: 10px;
+        }
+
+        #contador {
+          font-weight: bold;
+          color: #90ee90;
+          font-size: 28px;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+          from { transform: scale(0.7); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+      `;
+        document.head.appendChild(estilos);
+
+        // Animar contador de clientes satisfechos
+        let contador = 0;
+        const maxClientes = 500;
+        const contadorElemento = document.getElementById("contador");
+
+        const intervalo = setInterval(() => {
+          contador += Math.floor(Math.random() * 10) + 1;
+          if (contador >= maxClientes) {
+            contador = maxClientes;
+            clearInterval(intervalo);
+            setTimeout(() => {
+              overlay.style.opacity = "0";
+              setTimeout(() => {
+                window.location.href = "tienda.html";
+              }, 600);
+            }, 1200);
+          }
+          contadorElemento.textContent = contador;
+        }, 60);
+      }
+    </script>
+  </body>
+</html>
